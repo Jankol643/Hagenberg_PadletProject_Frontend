@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import { Padlet, Entry } from "../shared/padlet";
+import {PadletStoreService} from "../shared/padlet-store.service";
 
 @Component({
   selector: 'bs-padlet-list',
@@ -6,6 +8,20 @@ import { Component } from '@angular/core';
   styles: [
   ]
 })
-export class PadletListComponent {
+export class PadletListComponent implements OnInit {
+  padlets: Padlet[] = [];
 
+  @Output() showDetailsEvent = new EventEmitter<Padlet>();
+
+  constructor(private ps : PadletStoreService) {
+  }
+
+  ngOnInit(): void {
+    this.padlets = this.ps.getAll();
+
+  }
+
+  showDetails(padlet: Padlet) {
+    this.showDetailsEvent.emit(padlet);
+  }
 }

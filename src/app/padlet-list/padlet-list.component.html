@@ -1,1 +1,6 @@
-<p>padlet-list works!</p>
+<div class="ui middle aligned selection divided list padlet-list">
+  <a *ngFor="let padlet of padlets" class="item bs-padlet-list-item"
+     [padlet]="padlet" (click)="showDetails(padlet)">
+
+  </a>
+</div>
