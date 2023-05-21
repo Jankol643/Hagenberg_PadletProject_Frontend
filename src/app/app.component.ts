@@ -3,10 +3,7 @@ import {Padlet} from "./shared/padlet";
 
 @Component({
   selector: 'bs-root',
-  template: `
-    <bs-padlet-list *ngIf="listOn" (showDetailsEvent)="showDetails($event)"></bs-padlet-list>
-    <bs-padlet-details *ngIf="detailsOn" [padlet]="padlet" (showListEvent)="showList()"></bs-padlet-details>
-    `,
+  templateUrl: './app.component.html',
   styles: []
 })
 export class AppComponent {
@@ -16,14 +13,4 @@ export class AppComponent {
 
   padlet : Padlet | undefined;
 
-  showList() {
-    this.listOn = true;
-    this.detailsOn = false;
-  }
-
-  showDetails(padlet:Padlet) {
-    this.padlet = padlet;
-    this.listOn = false;
-    this.detailsOn = true;
-  }
 }

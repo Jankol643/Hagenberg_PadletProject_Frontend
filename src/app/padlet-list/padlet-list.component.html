@@ -1,6 +1,10 @@
 <div class="ui middle aligned selection divided list padlet-list">
   <a *ngFor="let padlet of padlets" class="item bs-padlet-list-item"
-     [padlet]="padlet" (click)="showDetails(padlet)">
+     [padlet]="padlet" [routerLink]="[padlet.id]">
 
   </a>
+</div>
+
+<div *ngIf="!padlets" class="ui active dimmer">
+  <div class="ui large text loader">Daten werden geladen...</div>
 </div>

@@ -1,5 +1,5 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import { Padlet, Entry } from "../shared/padlet";
+import {Component, OnInit} from '@angular/core';
+import { Padlet } from "../shared/padlet";
 import {PadletStoreService} from "../shared/padlet-store.service";
 
 @Component({
@@ -11,17 +11,10 @@ import {PadletStoreService} from "../shared/padlet-store.service";
 export class PadletListComponent implements OnInit {
   padlets: Padlet[] = [];
 
-  @Output() showDetailsEvent = new EventEmitter<Padlet>();
-
   constructor(private ps : PadletStoreService) {
   }
 
   ngOnInit(): void {
-    this.padlets = this.ps.getAll();
-
-  }
-
-  showDetails(padlet: Padlet) {
-    this.showDetailsEvent.emit(padlet);
+    this.ps.getAll().subscribe(res => this.padlets = res);
   }
 }

@@ -1,17 +1,26 @@
 <div class="ui" *ngIf="padlet">
-  <div class="ui entry" *ngFor="let entry of padlet.entries">
-    <p>Text: {{entry.entryText}}</p>
-    <p>Rating: {{entry.rating}}
+  <div class="ui" *ngIf="padlet.entries && padlet.entries.length > 0">
+    <div class="ui entry" *ngFor="let entry of padlet.entries">
+      <p>Text: {{entry.entryText}}</p>
+      <p>Rating: {{entry.rating}}
 
-    <div class="four wide column">
-    <h4 class="ui header">Rating</h4>
-    <div class="ui star rating" *ngIf="entry.rating">
-      <i *ngFor="let r of getRating(entry.rating)" class="yellow star icon"></i>
-    </div>
+      <div class="four wide column">
+        <h4 class="ui header">Rating</h4>
+        <div class="ui star rating" *ngIf="entry.rating">
+          <i *ngFor="let r of getRating(entry.rating)" class="yellow star icon"></i>
+        </div>
+      </div>
+  </div>
+  <div class="ui" *ngIf="padlet.entries && padlet.entries.length == 0">
+    <span>Padlet has no entries</span>
   </div>
 
   </div>
 
 
-  <button (click)="showPadletList()" class="ui red button">Zurück zur Liste</button>
+  <button [routerLink]="'/padlets'" class="ui red button">Zurück zur Liste</button>
+
+  <button class="ui tiny red labeled icon button" (click)="removePadlet()">
+    <i class="remove icon"></i> Padlet löschen
+  </button>
 </div>
