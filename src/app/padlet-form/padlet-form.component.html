@@ -1,4 +1,4 @@
-<h1>Padlet bearbeiten</h1>
+<h1>{{!this.isUpdatingPadlet ? 'Padlet erstellen' : 'Padlet bearbeiten'}}</h1>
 <form  class="ui large form" [formGroup]="padletForm" (ngSubmit)="submitForm()">
   <input type="hidden" formControlName="id">
   <div class="field">
@@ -7,22 +7,34 @@
     <div *ngIf="errors['title']" class="ui negative message"> {{ errors['title'] }} </div>
   </div>
   <div class="field">
-    <label>Bilder</label>
+    <label>Entries</label>
     <div formArrayName="entries">
       <div class="fields" *ngFor="let control of entries?.controls; index as i; last as l" [formGroupName]="i">
         <input type="hidden" formControlName="id">
         <div class="nine wide field">
           <input formControlName="entryText" placeholder="Entry{{i+1}}_title">
         </div>
-        <div class="six wide field">
-          <input type="number" formControlName="rating" placeholder="Entry{{i+1}}_rating">
-        </div>
         <div class="one wide field" *ngIf="l">
           <button (click)="addEntryControl()" class="ui large button" type="button">+</button>
         </div>
       </div>
     </div>
-    <div *ngIf="errors['images']" class="ui negative message">{{ errors['images'] }}</div>
+    <div *ngIf="errors['entries']" class="ui negative message">{{ errors['entries'] }}</div>
+  </div>
+  <div *ngIf="isLoggedIn()">
+    <div class="form-group">
+      <div>
+        <input id="private" type="radio" value="private" name="ispublic" formControlName="ispublic">
+        <label for="private">Privat</label>
+      </div>
+
+      <div>
+        <input id="public" type="radio" value="public" name="ispublic" formControlName="ispublic">
+        <label for="public">Öffentlich</label>
+      </div>
+
+      <div *ngIf="errors['ispublic']" class="ui negative message">{{ errors['ispublic'] }}</div>
+    </div>
   </div>
 
   <button type="submit" class="ui button" [disabled]="padletForm.invalid">Speichern</button>

@@ -8,5 +8,7 @@ export class ErrorMessage {
 }
 
 export const PadletFormErrorMessages = [
-  new ErrorMessage('title', 'required', 'Ein Padlettitel muss angegeben werden')
+  new ErrorMessage('title', 'required', 'Ein Padlettitel muss angegeben werden'),
+  new ErrorMessage('entryText', 'required', 'Ein Eintragtext muss angegeben werden.'),
+  new ErrorMessage('ispublic', 'required', 'Es muss ausgewählt werden, ob das Padlet öffentlich oder privat ist')
 ];

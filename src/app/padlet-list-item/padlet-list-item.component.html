@@ -1,4 +1,10 @@
-<div class="content">
-  <div class="header">{{ padlet?.title }}</div>
-  <div class="description">User: {{ padlet?.user_id }}</div>
+<div class="card" *ngIf="padlet?.is_public == 1 || (padlet?.is_public == 0 && this.authService.isLoggedIn() &&
+  padlet?.user_id == this.authService.getLoggedInUser())">
+  <div class="content">
+    <a class="header">{{ padlet?.title }}</a>
+  </div>
+  <div class="meta">{{padlet?.is_public == 0 ? 'privat' : 'öffentlich'}}</div>
+  <div class="description" *ngIf="padlet?.user_id != null">User: {{ padlet?.user_id }}</div>
+  <div class="description" *ngIf="padlet?.user_id == null">Nicht angemeldeter Benutzer</div>
 </div>
+

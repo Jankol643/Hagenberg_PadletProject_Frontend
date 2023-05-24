@@ -2,7 +2,7 @@ import {Padlet} from "./padlet";
 
 export class PadletFactory {
   static empty(): Padlet {
-    return new Padlet(0, '', 0, 0, [{id: 0, entryText: '', rating: 0}])
+    return new Padlet(0, '', 0, 0, [{id: 0, entryText: ''}])
   }
 
   static fromObject(rawPadlet: any) : Padlet {

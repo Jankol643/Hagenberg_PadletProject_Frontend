@@ -1,8 +1,14 @@
 <div class="ui middle aligned selection divided list padlet-list">
-  <a *ngFor="let padlet of padlets" class="item bs-padlet-list-item"
-     [padlet]="padlet" [routerLink]="[padlet.id]">
+  <div *ngFor="let padlet of padlets">
+    <div *ngIf="padlet?.is_public == 1 || (padlet?.is_public == 0 && isLoggedIn() &&
+  padlet?.user_id == getLoggedInUser())">
+      <a class="item bs-padlet-list-item"
+         [padlet]="padlet" [routerLink]="[padlet.id]">
+      </a>
+      <hr>
+    </div>
+  </div>
 
-  </a>
 </div>
 
 <div *ngIf="!padlets" class="ui active dimmer">

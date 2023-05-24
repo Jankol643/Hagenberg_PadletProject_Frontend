@@ -23,6 +23,10 @@ export class PadletStoreService {
     return this.http.get<Padlet>(`${this.api}/padlets/${id}`).pipe(retry(3)).pipe(catchError(this.errorHandler));
   }
 
+  public getAllSearch(searchTerm: string) : Observable<Array<Padlet>> {
+    return this.http.get<Padlet>(`${this.api}/search/${searchTerm}`).pipe(retry(3)).pipe(catchError(this.errorHandler));
+  }
+
   create (padlet: Padlet) : Observable<any> {
     return this.http.post(`${this.api}/padlets`, padlet).pipe(retry(3)).pipe(catchError(this.errorHandler));
   }
