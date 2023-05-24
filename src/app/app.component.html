@@ -2,7 +2,9 @@
   <a routerLink="home" routerLinkActive="active" class="item">Home</a>
   <a routerLink="padlets" routerLinkActive="active" class="item">Padlets</a>
   <a routerLink="admin" routerLinkActive="active" class="item">Administration</a>
-  <a routerLink="login" routerLinkActive="active" class="item">{{getLoginLabel()}}</a>
+  <div class="item">
+    <a routerLink="login" routerLinkActive="active" class="ui primary button">{{getLoginLabel()}}</a>
+  </div>
 </div>
 
 <div class="ui container">

@@ -7,6 +7,7 @@ export class Padlet {
     public title: string,
     public user_id: number | null,
     public is_public: number,
+    public created_at: Date,
     public entries?: Entry[]
   ) {
   }

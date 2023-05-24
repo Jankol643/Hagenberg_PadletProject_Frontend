@@ -23,19 +23,14 @@
   </div>
   <div *ngIf="isLoggedIn()">
     <div class="form-group">
-      <div>
-        <input id="private" type="radio" value="private" name="ispublic" formControlName="ispublic">
-        <label for="private">Privat</label>
-      </div>
+        <input id="private" type="radio" value="private" name="ispublic" formControlName="ispublic"> Privat
 
-      <div>
-        <input id="public" type="radio" value="public" name="ispublic" formControlName="ispublic">
-        <label for="public">Öffentlich</label>
-      </div>
+        <input id="public" type="radio" value="public" name="ispublic" formControlName="ispublic"> Öffentlich
 
       <div *ngIf="errors['ispublic']" class="ui negative message">{{ errors['ispublic'] }}</div>
+
     </div>
   </div>
-
+  <div class="ui hidden divider"></div>
   <button type="submit" class="ui button" [disabled]="padletForm.invalid">Speichern</button>
 </form>

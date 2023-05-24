@@ -1,11 +1,10 @@
-<div class="ui middle aligned selection divided list padlet-list">
+<div class="ui middle aligned selection divided">
   <div *ngFor="let padlet of padlets">
     <div *ngIf="padlet?.is_public == 1 || (padlet?.is_public == 0 && isLoggedIn() &&
   padlet?.user_id == getLoggedInUser())">
-      <a class="item bs-padlet-list-item"
+      <a class="bs-padlet-list-item"
          [padlet]="padlet" [routerLink]="[padlet.id]">
       </a>
-      <hr>
     </div>
   </div>
 

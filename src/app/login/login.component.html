@@ -25,5 +25,8 @@
   </form>
 </div>
 <div *ngIf="isLoggedIn()">
-  <button type="button" class="ui button" (click)="logout()">Logout</button>
+  <div class="ui raised very padded text container segment">
+    <h1>Möchtest du dich wirklich ausloggen?</h1>
+    <button type="button" class="ui button" (click)="logout()">Logout</button>
+  </div>
 </div>

@@ -1,10 +1,14 @@
-<div class="card" *ngIf="padlet?.is_public == 1 || (padlet?.is_public == 0 && this.authService.isLoggedIn() &&
-  padlet?.user_id == this.authService.getLoggedInUser())">
-  <div class="content">
-    <a class="header">{{ padlet?.title }}</a>
+<div *ngIf="padlet?.is_public == 1 || (padlet?.is_public == 0 && this.authService.isLoggedIn() &&
+  padlet?.user_id == this.authService.getLoggedInUser())" class="ui cards">
+  <div class="card">
+    <div class="content">
+      <a class="header">{{ padlet?.title }}</a>
+    </div>
+    <div class="meta">{{padlet?.is_public == 0 ? 'privat' : 'öffentlich'}}</div>
+    <div class="meta"><i class="calendar alternate icon outline"></i> {{padlet?.created_at}}</div>
+    <div class="description" *ngIf="padlet?.user_id != null">
+      <i class="user icon outline"></i>User: {{ padlet?.user_id }}</div>
+    <div class="description" *ngIf="padlet?.user_id == null">
+      <i class="user icon outline"></i>Nicht angemeldeter Benutzer</div>
   </div>
-  <div class="meta">{{padlet?.is_public == 0 ? 'privat' : 'öffentlich'}}</div>
-  <div class="description" *ngIf="padlet?.user_id != null">User: {{ padlet?.user_id }}</div>
-  <div class="description" *ngIf="padlet?.user_id == null">Nicht angemeldeter Benutzer</div>
 </div>
-
